@@ -8,7 +8,7 @@ from playwright.sync_api import sync_playwright, expect
 
 with sync_playwright() as playwright:
     browser = playwright.chromium.launch(headless=False)
-    # открываем новую страницу для работы. pw может работать с несколькими страницами
+    # Открываю новую страницу для работы. pw может работать с несколькими страницами
     page = browser.new_page()
     # Открытие страницы
     page.goto("https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/auth/login")
