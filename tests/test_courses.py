@@ -1,14 +1,12 @@
 import os
-
-from playwright.sync_api import sync_playwright, expect, sync_playwright
+from playwright.sync_api import sync_playwright, expect
 
 
 def test_empty_courses_list():
     with sync_playwright() as pw:
-        browser = pw.chromium.launch(headless=False)
+        browser = pw.chromium.launch(headless=True)
         context = browser.new_context()
         page = context.new_page()
-
         page.goto('https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/auth/registration')
 
         email_input = page.get_by_test_id('registration-form-email-input').locator('input')
