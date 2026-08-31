@@ -1,12 +1,16 @@
 import os
-
+import pytest
 from playwright.sync_api import sync_playwright, expect
 
+
+@pytest.mark.regression
+@pytest.mark.registration
 def test_successful_registration():
     with sync_playwright() as pw:
         browser = pw.chromium.launch(headless=False)
         context = browser.new_context()
         page = context.new_page()
+
 
         page.goto('https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/auth/registration')
 
@@ -22,6 +26,7 @@ def test_successful_registration():
         registration_button = page.get_by_test_id('registration-page-registration-button')
         registration_button.click()
 
+        os.makedirs('cookie', exist_ok=True)  # Гарантирует наличие папки cookie
         context.storage_state(path='cookie/browser-state.json')
 
     with sync_playwright() as pw:
@@ -31,5 +36,6 @@ def test_successful_registration():
 
         page.goto('https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/dashboard')
 
-        if os.path.exists('cookie/browser-state.json'):
-            os.remove('cookie/browser-state.json')
+
+    if os.path.exists('cookie/browser-state.json'):
+        os.remove('cookie/browser-state.json')

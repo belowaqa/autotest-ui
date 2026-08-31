@@ -1,0 +1,16 @@
+# Временные файлы Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Служебные файлы систем и IDE
+.idea/
+.vscode/
+.DS_Store
+
+# Виртуальные окружения и куки тестов
+.venv/
+venv/
+ENV/
+cookie/
