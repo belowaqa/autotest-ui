@@ -1,7 +1,10 @@
 import os
+import pytest
 from playwright.sync_api import sync_playwright, expect
 
 
+@pytest.mark.courses
+@pytest.mark.regression
 def test_empty_courses_list():
     with sync_playwright() as pw:
         browser = pw.chromium.launch(headless=True)
